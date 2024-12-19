@@ -142,7 +142,6 @@
                           {% comment %} {% render 'gift-wrap' id: 'cartDrawerGiftWrap' %} {% endcomment %}
                          
 
-<<<<<<< HEAD
                           {% comment %} {% render 'gift-wrap' id: 'cartDrawerGiftWrap' %} {% endcomment %}
                           {% if item.title == 'Gift Wrap' %}
                             <!-- This condition is looking for an exact match of 'Gift Wrap' in item.title -->
@@ -162,27 +161,6 @@
                           {% endif %}
 
 
-=======
-                       
-                            {% if item.title == 'Gift Wrap' %}
-                              <!-- This condition is looking for an exact match of 'Gift Wrap' in item.title -->
-                              <gift-wrap-editor 
-                                to="{{ item.properties['To'] }}"
-                                from="{{ item.properties['From'] }}"
-                                message="{{ item.properties['Gift Message'] }}"
-                                line-item-id="{{ item.id }}">
-                              </gift-wrap-editor>
-                            {% else %}
-                              <!-- Debugging: Log the item title if it's not 'Gift Wrap' -->
-                              <script>
-                                console.log('Item title:', '{{ item.variant.id }}');
-                              </script>
-                            {% endif %}
-                         
-                          
-                          
-                            {% if item.title != 'Gift Wrap'  %}
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
@@ -388,11 +366,7 @@
                             </svg>
                           </div>
                         </td>
-<<<<<<< HEAD
                         
-=======
-                      
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
                       </tr>
                     {%- endfor -%}
                     

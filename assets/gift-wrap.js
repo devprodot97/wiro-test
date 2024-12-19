@@ -184,7 +184,6 @@ class GiftWrap extends HTMLElement {
   
   // Define the custom element
   customElements.define('gift-wrap', GiftWrap);
-<<<<<<< HEAD
 
 
   class GiftWrapEditor extends HTMLElement {
@@ -196,23 +195,6 @@ class GiftWrap extends HTMLElement {
   
     connectedCallback() {
       // Initialize giftData from element attributes
-=======
-  
-
-
-
-
- 
-  class GiftWrapEditor extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: 'open' });
-      this.giftData = {};
-    }
-  
-    connectedCallback() {
-      // Read attributes from the custom element to initialize the gift wrap properties
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
       this.giftData = {
         to: this.getAttribute('to'),
         from: this.getAttribute('from'),
@@ -223,11 +205,7 @@ class GiftWrap extends HTMLElement {
       // Render the component
       this.render();
   
-<<<<<<< HEAD
       // Bind event listeners
-=======
-      // Attach event listeners for editing and updating
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
       this.shadowRoot.querySelector('.edit-gift-wrap-button').addEventListener('click', () => this.toggleEdit());
       this.shadowRoot.querySelector('.update-gift-wrap-button').addEventListener('click', () => this.updateGiftWrap());
     }
@@ -242,11 +220,7 @@ class GiftWrap extends HTMLElement {
             display: block;
           }
           .gift-wrap-edit {
-<<<<<<< HEAD
             display: block;
-=======
-            display: block; /* Ensure it's shown when toggled */
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
           }
           .hidden {
             display: none;
@@ -286,13 +260,8 @@ class GiftWrap extends HTMLElement {
       `;
     }
   
-<<<<<<< HEAD
     // Toggles between the display and edit modes
     toggleEdit() {
-=======
-    toggleEdit() {
-      console.log('Edit button clicked');
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
       const displaySection = this.shadowRoot.querySelector('.gift-wrap-display');
       const editSection = this.shadowRoot.querySelector('.gift-wrap-edit');
       const updateButton = this.shadowRoot.querySelector('.update-gift-wrap-button');
@@ -300,7 +269,6 @@ class GiftWrap extends HTMLElement {
   
       // Toggle visibility of sections
       displaySection.classList.add('hidden');
-<<<<<<< HEAD
       editSection.classList.remove('hidden');
       updateButton.classList.remove('hidden');
       editButton.classList.add('hidden');
@@ -378,59 +346,13 @@ class GiftWrap extends HTMLElement {
         });
       }
       
-=======
-      editSection.classList.remove('hidden');  // Show editable section
-      updateButton.classList.remove('hidden'); // Show the "Update" button
-      editButton.classList.add('hidden');      // Hide the "Edit" button
-    }
-  
-    async updateGiftWrap() {
-      const updatedTo = this.shadowRoot.querySelector('.gift-wrap-to-edit').value.trim();
-      const updatedFrom = this.shadowRoot.querySelector('.gift-wrap-from-edit').value.trim();
-      const updatedMessage = this.shadowRoot.querySelector('.gift-wrap-message-edit').value.trim();
-  
-      // Prepare the data for the AJAX request
-      const updatedAttributes = {
-        ['gift_to_' + this.giftData.lineItemId]: updatedTo,
-        ['gift_from_' + this.giftData.lineItemId]: updatedFrom,
-        ['gift_message_' + this.giftData.lineItemId]: updatedMessage
-      };
-  
-      try {
-        // Send the updated data to Shopify's cart update endpoint
-        const response = await fetch('/cart/update.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ attributes: updatedAttributes })
-        });
-  
-        const cart = await response.json();
-        console.log('Cart updated:', cart);
-  
-        // After updating, reflect the changes in the display section
-        this.giftData.to = updatedTo;
-        this.giftData.from = updatedFrom;
-        this.giftData.message = updatedMessage;
-  
-        this.render();  // Re-render the component with updated data
-  
-        alert('Gift details updated successfully!');
-      } catch (error) {
-        console.error('Error updating cart:', error);
-        alert('There was an error updating the gift details. Please try again.');
-      }
-    }
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
   }
   
   // Register the custom element
   customElements.define('gift-wrap-editor', GiftWrapEditor);
   
-<<<<<<< HEAD
   
   
-=======
->>>>>>> d69c13b7b7fbf7fe2fdb62409262f203a43c9663
 
 
 
