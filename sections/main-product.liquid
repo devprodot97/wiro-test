@@ -283,6 +283,12 @@
                   {%- endif -%}
                 </div>
               </div>
+
+            {% comment %} WIRO GIFT WRAP {% endcomment %}
+
+            {%- when 'gift_wrap' -%}
+              {% render 'gift-wrap' id: 'productPageGiftWrap' %}
+              {% comment %} WIRO GIFT WRAP {% endcomment %}
             {%- when 'popup' -%}
               <modal-opener
                 class="product-popup-modal__opener no-js-hidden quick-add-hidden"
@@ -622,6 +628,10 @@
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
       "limit": 1
+    },
+    { 
+    "type":"gift_wrap",
+    "name": "t:sections.main-product.blocks.gift_wrap.name",
     },
     {
       "type": "sku",

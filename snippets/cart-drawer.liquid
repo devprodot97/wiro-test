@@ -112,6 +112,7 @@
                     {%- for item in cart.items -%}
                       <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
+                     
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                             <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
@@ -134,6 +135,25 @@
                           <a href="{{ item.url }}" class="cart-item__name h4 break">
                             {{- item.product.title | escape -}}
                           </a>
+
+                          {% comment %} {% render 'gift-wrap' id: 'cartDrawerGiftWrap' %} {% endcomment %}
+                          {% if item.title == 'Gift Wrap' %}
+                            <!-- This condition is looking for an exact match of 'Gift Wrap' in item.title -->
+                            <gift-wrap-editor 
+                              to="{{ item.properties['To'] }}"
+                              from="{{ item.properties['From'] }}"
+                              message="{{ item.properties['Gift Message'] }}"
+                              line-item-id="{{ item.id }}"
+                              item-key="{{ item.key }}">
+                             
+                            </gift-wrap-editor>
+                          {% else %}
+                            <!-- Debugging: Log the item title if it's not 'Gift Wrap' -->
+                            <script>
+                              console.log('Item title:', '{{ item.variant.id }}');
+                            </script>
+                          {% endif %}
+
 
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
@@ -336,9 +356,12 @@
                             </svg>
                           </div>
                         </td>
+                        
                       </tr>
                     {%- endfor -%}
+                    
                   </tbody>
+                  
                 </table>
               </div>
             {%- endif -%}
@@ -375,6 +398,7 @@
         <!-- Subtotals -->
 
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+
           <div class="totals" role="status">
             <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
             <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>

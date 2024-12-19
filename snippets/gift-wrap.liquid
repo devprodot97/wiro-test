@@ -1,0 +1,21 @@
+
+<gift-wrap></gift-wrap>
+{% comment %} <!-- Checkbox for adding Gift Wrap -->
+<label for="giftWrapCheckbox">
+    <input type="checkbox" id="giftWrapCheckbox" class="form-checkbox h-5 w-5 text-indigo-600">
+    <span class="product__text inline-richtext">Wrap as a gift? ( + Rs.300 )</span>
+</label>
+
+<!-- Gift wrap form (hidden initially) -->
+<div id="giftWrapForm" class="gift-wrap-form hidden">
+    <p class="line-item-property__field gift-form-box__wrapper">
+        <label for="to" class="block product__text inline-richtext">To</label>
+        <input placeholder="Recipient's name" class="pl-[15px] required block w-full mt-1 h-[40px] border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 " id="to" type="text" name="properties[To]" required>
+
+        <label for="from" class="block mt-4 product__text inline-richtext">From</label>
+        <input placeholder="Sender's name" class="pl-[15px] required block w-full mt-1 h-[40px] border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="from" type="text" name="properties[From]" required>
+
+        <label for="gift_message" class="block mt-4 product__text inline-richtext">Gift Message</label>
+        <textarea placeholder="Type your message" class="pl-[15px] required block w-full mt-1 h-[40px] border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="gift_message" name="properties[Gift Message]" required></textarea>
+    </p>
+</div> {% endcomment %}
