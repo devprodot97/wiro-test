@@ -55,6 +55,9 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "gift_wrap":{
+          "type":"gift_wrap"
         }
       },
       "block_order": [
@@ -65,7 +68,8 @@
         "price",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "gift_wrap"
       ],
       "settings": {
         "enable_sticky_info": true,

@@ -1921,6 +1921,9 @@
         "price": {
           "name": "Price"
         },
+        "gift_wrap": {
+          "name": "Gift Wrap"
+        },
         "inventory": {
           "name": "Inventory status",
           "settings": {

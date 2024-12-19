@@ -110,7 +110,9 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
-                      <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                      <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="{% if item.title != 'Gift Wrap'  %} cart-item {%else%} {% endif %}" role="row">
+                        {% if item.title != 'Gift Wrap'  %}
+
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -125,16 +127,39 @@
                             >
                           {% endif %}
                         </td>
+                        {% endif %}
 
                         <td class="cart-item__details" role="cell" headers="CartDrawer-ColumnProduct">
                           {%- if settings.show_vendor -%}
                             <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                           {%- endif -%}
-
+                          {% if item.title != 'Gift Wrap'  %}
                           <a href="{{ item.url }}" class="cart-item__name h4 break">
                             {{- item.product.title | escape -}}
                           </a>
+                        {% endif %}
+                          {% comment %} {% render 'gift-wrap' id: 'cartDrawerGiftWrap' %} {% endcomment %}
+                         
 
+                       
+                            {% if item.title == 'Gift Wrap' %}
+                              <!-- This condition is looking for an exact match of 'Gift Wrap' in item.title -->
+                              <gift-wrap-editor 
+                                to="{{ item.properties['To'] }}"
+                                from="{{ item.properties['From'] }}"
+                                message="{{ item.properties['Gift Message'] }}"
+                                line-item-id="{{ item.id }}">
+                              </gift-wrap-editor>
+                            {% else %}
+                              <!-- Debugging: Log the item title if it's not 'Gift Wrap' -->
+                              <script>
+                                console.log('Item title:', '{{ item.variant.id }}');
+                              </script>
+                            {% endif %}
+                         
+                          
+                          
+                            {% if item.title != 'Gift Wrap'  %}
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
@@ -155,7 +180,7 @@
                               {{ item.original_price | money }}
                             </div>
                           {%- endif -%}
-
+                        {% endif %}
                           {%- if item.product.has_only_default_variant == false
                             or item.properties.size != 0
                             or item.selling_plan_allocation != null
@@ -172,7 +197,7 @@
                                   </div>
                                 {%- endfor -%}
                               {%- endif -%}
-
+                              {% if item.title != 'Gift Wrap'  %}
                               {%- for property in item.properties -%}
                                 {%- assign property_first_char = property.first | slice: 0 -%}
                                 {%- if property.last != blank and property_first_char != '_' -%}
@@ -195,6 +220,7 @@
                                   </div>
                                 {%- endif -%}
                               {%- endfor -%}
+                            {% endif %}
                             </dl>
 
                             <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
@@ -213,7 +239,7 @@
                             {%- endfor -%}
                           </ul>
                         </td>
-
+                        {% if item.title != 'Gift Wrap'  %}
                         <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
                           <div class="loading-overlay hidden">
                             <div class="loading-overlay__spinner">
@@ -267,9 +293,12 @@
                             {%- endif -%}
                           </div>
                         </td>
-
+                      {% endif %}
+                        
                         <td class="cart-item__quantity" role="cell" headers="CartDrawer-ColumnQuantity">
+                          
                           <div class="cart-item__quantity-wrapper">
+                            {% if item.title != 'Gift Wrap'  %}
                             <quantity-input class="quantity cart-quantity">
                               <button class="quantity__button no-js-hidden" name="minus" type="button">
                                 <span class="visually-hidden">
@@ -302,7 +331,7 @@
                                 {% render 'icon-plus' %}
                               </button>
                             </quantity-input>
-
+                          {% endif %}
                             <cart-remove-button
                               id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                               data-index="{{ item.index | plus: 1 }}"
@@ -336,9 +365,12 @@
                             </svg>
                           </div>
                         </td>
+                      
                       </tr>
                     {%- endfor -%}
+                    
                   </tbody>
+                  
                 </table>
               </div>
             {%- endif -%}
@@ -375,6 +407,7 @@
         <!-- Subtotals -->
 
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+
           <div class="totals" role="status">
             <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
             <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
