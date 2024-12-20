@@ -10,7 +10,10 @@ class GiftWrap extends HTMLElement {
   
       // Attach shadow DOM to encapsulate styles and markup
       const shadow = this.attachShadow({ mode: 'open' });
-
+      // Access the passed attributes using getAttribute()
+      this.toLimit = this.getAttribute('toLimit');
+      this.fromLimit = this.getAttribute('fromLimit');
+      this.messageLimit = this.getAttribute('messageLimit');
       shadow.innerHTML = `
        <style>
        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
@@ -27,21 +30,25 @@ class GiftWrap extends HTMLElement {
           <div id="giftWrapForm" class="gift-wrap-form hidden space-y-4">
             <div class="flex flex-col">
               <label for="to" class="block text-md font-medium text-gray-700">To</label>
-              <input id="to" type="text" placeholder="Recipient's name" class="input-field" name="properties[To]" required />
+              <input maxlength="${this.toLimit}" id="to" type="text" placeholder="Recipient's name" class="input-field" name="properties[To]" required />
             </div>
   
             <div>
               <label for="from" class="block text-md font-medium text-gray-700 mt-4">From</label>
-              <input id="from" type="text" placeholder="Sender's name" class="input-field" name="properties[From]" required />
+              <input maxlength="${this.fromLimit}" id="from" type="text" placeholder="Sender's name" class="input-field" name="properties[From]" required />
             </div>
   
             <div>
               <label for="gift_message" class="block text-md font-medium text-gray-700 mt-4">Gift Message</label>
-              <textarea id="gift_message" placeholder="Type your message" class="input-field" name="properties[Gift Message]" required></textarea>
+              <textarea maxlength="${this.messageLimit}" id="gift_message" placeholder="Type your message" class="input-field" name="properties[Gift Message]" required></textarea>
             </div>
           </div>
         </div>
       `;
+  
+
+
+
   
       // Get references to the DOM elements inside the shadow DOM
       this._giftWrapCheckbox = shadow.querySelector('#giftWrapCheckbox');

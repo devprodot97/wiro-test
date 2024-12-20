@@ -287,7 +287,10 @@
             {% comment %} WIRO GIFT WRAP {% endcomment %}
 
             {%- when 'gift_wrap' -%}
-              {% render 'gift-wrap' id: 'productPageGiftWrap' %}
+              {% assign gift_wrap_product_id = block.settings.gift_wrap_product.id %}
+              {% if gift_wrap_product_id == product.id %}
+                {% render 'gift-wrap' id: 'productPageGiftWrap', toLimit: block.settings.to_limit, fromLimit: block.settings.from_limit, messageLimit: block.settings.message_limit %}
+              {% endif %}
               {% comment %} WIRO GIFT WRAP {% endcomment %}
             {%- when 'popup' -%}
               <modal-opener
@@ -632,6 +635,32 @@
     { 
     "type":"gift_wrap",
     "name": "t:sections.main-product.blocks.gift_wrap.name",
+    "settings": [
+      {
+        "type": "product",
+        "label": "Select Product for Gift Wrap",
+        "id": "gift_wrap_product",
+        "info": "Choose the product(s) for which you want to offer a gift wrap option."
+      },
+      {
+        "type": "text",
+        "label": "Input word limit for To",
+        "id": "to_limit",
+        "info": "You have to type the words limit for customers in number. eg - 4,5",
+      },
+      {
+        "type": "text",
+        "label": "Input word limit for From",
+        "id": "from_limit",
+        "info": "You have to type the words limit for customers in number. eg - 4,5"
+      },
+      {
+        "type": "text",
+        "label": "Input word limit for Message",
+        "id": "message_limit",
+        "info": "You have to type the words limit for customers in number. eg - 4,5"
+      }
+    ]
     },
     {
       "type": "sku",
