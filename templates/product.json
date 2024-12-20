@@ -56,8 +56,14 @@
             "share_label": "Share"
           }
         },
-        "gift_wrap":{
-          "type":"gift_wrap"
+        "gift_wrap": {
+          "type": "gift_wrap",
+          "settings": {
+            "gift_wrap_product": "the-complete-snowboard",
+            "to_limit": "10",
+            "from_limit": "10",
+            "message_limit": "20"
+          }
         }
       },
       "block_order": [
