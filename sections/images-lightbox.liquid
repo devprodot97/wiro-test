@@ -1,8 +1,27 @@
 
+<section id="{{ section.id }}-lightbox">
+  <div class="lightbox-item">
+    
+  </div>
+</section>
+
 {% schema %}
   {
     "name": "Image LightBox",
-    "settings": []
+    "settings": [],
+    "blocks": [
+    {
+      "type": "images",
+      "name": "Lightbox Images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        }
+      ]
+    }
+  ],
   }
 {% endschema %}
 
