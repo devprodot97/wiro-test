@@ -11,7 +11,9 @@
 
     {% for block in section.blocks %}
       <h3>Selected Product Image</h3>
+             <a href="{{ block.settings.product | image_url: width: 300, height: 200 }}" data-lightbox="data-set-images_product" data-title="data_set_images_product">
              <img src="{{ block.settings.product | image_url: width: 300, height: 200 }}">
+    </a>
 
     {% endfor %}
   </div>
