@@ -3,7 +3,7 @@
   <div class="lightbox-item">
 
     {% for block in section.blocks %}
-        <img src="{{ block.settings.image }}">
+        <img src="{{ block.settings.image | asset_url:'master' }}">
     {% endfor %}
     
   </div>
