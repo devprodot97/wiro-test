@@ -166,6 +166,20 @@
     "images_lightbox": {
       "type": "images-lightbox",
       "blocks": {
+        "images_FDPqAz": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "product": ""
+          }
+        },
+        "images_fzzEBr": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/Main_d624f226-0a89-4fe1-b333-0d1548b43c06.jpg",
+            "product": ""
+          }
+        },
         "images_QjEjXE": {
           "type": "images",
           "settings": {
@@ -175,6 +189,8 @@
         }
       },
       "block_order": [
+        "images_FDPqAz",
+        "images_fzzEBr",
         "images_QjEjXE"
       ],
       "settings": {}
