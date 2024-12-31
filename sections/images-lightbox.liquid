@@ -1,23 +1,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/css/lightbox.min.css">
-
 <section id="{{ section.id }}-lightbox">
   <div class="lightbox-item">
     {% for block in section.blocks %}
-      <!-- Ensure each block has a unique identifier for Lightbox groups -->
-      <a href="{{ block.settings.image | image_url: width: 800, height: 600 }}" 
-         data-lightbox="lightbox-group-{{ section.id }}" 
-         data-title="{{ block.settings.product.title }}">
-        <img src="{{ block.settings.image | image_url: width: 300, height: 200 }}" alt="Image #{{ forloop.index }}">
-      </a>
+    <a href="{{ block.settings.image | image_url: width: 300, height: 200 }}" data-lightbox="{{ block.id }}" data-title="My caption">Image #1</a>
+       <!-- <img data-lightbox="image-{{ block.id }}" src="{{ block.settings.image | image_url: width: 300, height: 200 }}"> -->
+
+
+    {% endfor %}
+
+    {% for block in section.blocks %}
+      <h3>Selected Product Image</h3>
+             <img src="{{ block.settings.product | image_url: width: 300, height: 200 }}">
+
     {% endfor %}
   </div>
 </section>
 
 {% schema %}
-{
-  "name": "Image LightBox",
-  "settings": [],
-  "blocks": [
+  {
+    "name": "Image LightBox",
+    "settings": [
+    ],
+    "blocks": [
     {
       "type": "images",
       "name": "Lightbox Images",
@@ -26,7 +30,12 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_",
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
         },
         {
           "type": "product",
@@ -35,14 +44,16 @@
         }
       ]
     }
-  ]
-}
+  ],
+  }
 {% endschema %}
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/js/lightbox.min.js"></script>
 <script>
-  lightbox.option({
-    'resizeDuration': 200,
-    'wrapAround': true
-  });
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
 </script>
