@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdn.shopify.com/s/files/1/0687/6404/1385/files/lightbox.css?v=1735639351">
 <section id="{{ section.id }}-lightbox">
   <div class="lightbox-item">
+    <div class="flex">
     {% for block in section.blocks %}
     <a href="{{ block.settings.image | image_url: width: 650 }}" data-lightbox="data-set-images" data-title="data_set_images">
              <img src="{{ block.settings.image | image_url: width: 650 }}">
@@ -8,7 +9,8 @@
 
 
     {% endfor %}
-
+</div>
+    <div class="flex">
     {% for block in section.blocks %}
       <h3>Selected Product Image</h3>
              <a href="{{ block.settings.product | image_url: width: 650}}" data-lightbox="data-set-images_product" data-title="data_set_images_product">
@@ -16,6 +18,7 @@
     </a>
 
     {% endfor %}
+    </div>
   </div>
 </section>
 
