@@ -169,17 +169,13 @@
         "images_QjEjXE": {
           "type": "images",
           "settings": {
-            "image": "shopify://shop_images/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg"
+            "image": "shopify://shop_images/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg",
+            "product": "the-3p-fulfilled-snowboard"
           }
-        },
-        "images_k3BTPd": {
-          "type": "images",
-          "settings": {}
         }
       },
       "block_order": [
-        "images_QjEjXE",
-        "images_k3BTPd"
+        "images_QjEjXE"
       ],
       "settings": {}
     },
