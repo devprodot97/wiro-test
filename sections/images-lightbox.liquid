@@ -2,7 +2,7 @@
 <section id="{{ section.id }}-lightbox">
   <div class="lightbox-item">
     {% for block in section.blocks %}
-    <a href="{{ block.settings.image | image_url: width: 300, height: 200 }}" data-lightbox="image-1" data-title="My caption">Image #1</a>
+    <a href="{{ block.settings.image | image_url: width: 300, height: 200 }}" data-lightbox="{{ block.id }}" data-title="My caption">Image #1</a>
        <!-- <img data-lightbox="image-{{ block.id }}" src="{{ block.settings.image | image_url: width: 300, height: 200 }}"> -->
 
 
