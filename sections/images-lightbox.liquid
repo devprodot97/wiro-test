@@ -2,7 +2,7 @@
 <section id="{{ section.id }}-lightbox">
   <div class="lightbox-item">
     {% for block in section.blocks %}
-      {{ block.settings.image | asset_url }}
+      {{ block.settings.image | image_tag }}
        <img src="{{ block.settings.image | asset_url }}">
     {% endfor %}
   </div>
