@@ -5,6 +5,10 @@
     
        <img src="{{ block.settings.image | image_url: width: 300, height: 200 }}">
 
+
+    {% endfor %}
+
+    {% for block in section.blocks %}
       <h3>Selected Product Image</h3>
       {{ block.settings.product | json }}
              <img src="{{ block.settings.product | image_url: width: 300, height: 200 }}">
