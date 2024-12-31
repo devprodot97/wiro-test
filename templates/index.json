@@ -166,6 +166,18 @@
     "images_lightbox": {
       "type": "images-lightbox",
       "blocks": {
+        "images_UDb8Jz": {
+          "type": "images",
+          "settings": {
+            "product": ""
+          }
+        },
+        "images_xDCLBg": {
+          "type": "images",
+          "settings": {
+            "product": ""
+          }
+        },
         "images_FDPqAz": {
           "type": "images",
           "settings": {
@@ -189,6 +201,8 @@
         }
       },
       "block_order": [
+        "images_UDb8Jz",
+        "images_xDCLBg",
         "images_FDPqAz",
         "images_fzzEBr",
         "images_QjEjXE"
