@@ -2,8 +2,8 @@
 <section id="{{ section.id }}-lightbox">
   <div class="lightbox-item">
     {% for block in section.blocks %}
-    <a href="{{ block.settings.image | image_url: width: 1000 }}" data-lightbox="data-set-images" data-title="data_set_images">
-             <img src="{{ block.settings.image | image_url: width: 1000 }}">
+    <a href="{{ block.settings.image | image_url: width: 650 }}" data-lightbox="data-set-images" data-title="data_set_images">
+             <img src="{{ block.settings.image | image_url: width: 650 }}">
     </a>
 
 
@@ -11,8 +11,8 @@
 
     {% for block in section.blocks %}
       <h3>Selected Product Image</h3>
-             <a href="{{ block.settings.product | image_url: width: 300, height: 200 }}" data-lightbox="data-set-images_product" data-title="data_set_images_product">
-             <img src="{{ block.settings.product | image_url: width: 300, height: 200 }}">
+             <a href="{{ block.settings.product | image_url: width: 650}}" data-lightbox="data-set-images_product" data-title="data_set_images_product">
+             <img src="{{ block.settings.product | image_url: width: 650 }}">
     </a>
 
     {% endfor %}
