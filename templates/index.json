@@ -165,6 +165,17 @@
     },
     "images_lightbox": {
       "type": "images-lightbox",
+      "blocks": {
+        "images_QjEjXE": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/Gift_Wrap.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "images_QjEjXE"
+      ],
       "settings": {}
     }
   },
